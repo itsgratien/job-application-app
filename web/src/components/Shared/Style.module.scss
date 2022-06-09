@@ -1,3 +1,25 @@
+@import '../../styles/colors.scss';
 .logo{
   position: relative; 
+}
+
+.layout {
+  background: radial-gradient(50% 50% at 50% 50%, #faff00 21.35%, rgba(128, 255, 0, 0.58) 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  .ov {
+    margin-left: 400px;
+    padding-bottom: 180px;
+    padding-top: 40px;
+    &::before {
+      content: '';
+      transform: rotate(2.13deg);
+      position: absolute;
+      width: 100%;
+      background: $yellow;
+      top: 0;
+      margin-top: -8vh;
+      bottom: 150px;
+    }
+  }
 }

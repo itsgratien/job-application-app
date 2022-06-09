@@ -2,6 +2,7 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import style from '../styles/Home.module.scss';
 import { Logo } from '@/components/Shared/Logo';
+import { Layout } from '@/components/Shared/Layout';
 import classnames from 'classnames';
 
 const Home: NextPage = () => {
@@ -10,10 +11,10 @@ const Home: NextPage = () => {
       <Head>
         <title>Simple Job Application System</title>
       </Head>
-      <div className={classnames(style.home, 'relative')}>
-        <div className={style.ov}>
+      <Layout>
+        <div className={classnames(style.home, 'relative')}>
           <div className={style.menu}>
-            <ul className='flex justify-end'>
+            <ul className="flex justify-end">
               <li>
                 <button
                   type="button"
@@ -40,7 +41,7 @@ const Home: NextPage = () => {
             </div>
           </div>
         </div>
-      </div>
+      </Layout>
     </>
   );
 };
