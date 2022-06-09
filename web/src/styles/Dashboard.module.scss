@@ -1,0 +1,25 @@
+.dashboard {
+  margin-top: 60px;
+}
+.showcase {
+  height: 100vh;
+  margin-left: -80px;
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    background-color: white;
+    transform: rotate(-2.77deg);
+    height: 120%;
+    width: 120%;
+  }
+}
+
+.header {
+  padding-left: 300px;
+  padding-right: 69px;
+  ul {
+    display: flex;
+    justify-content: space-between;
+  }
+}

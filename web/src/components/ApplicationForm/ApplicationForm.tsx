@@ -72,14 +72,12 @@ export const ApplicationForm = () => {
           />
         </div>
       </div>
-      <div className={style.section}>
-        <button
-          type="submit"
-          className={classname('outline-none focus:outline-none font-bold', style.submitBtn)}
-        >
-          Submit
-        </button>
-      </div>
+      <button
+        type="submit"
+        className={classname('outline-none focus:outline-none font-bold', style.submitBtn)}
+      >
+        Submit
+      </button>
     </form>
   );
 };
