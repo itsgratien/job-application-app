@@ -1,0 +1,49 @@
+@import './colors.scss';
+
+.home {
+  background: radial-gradient(50% 50% at 50% 50%, #faff00 21.35%, rgba(128, 255, 0, 0.58) 100%);
+  min-height: 100vh;
+  overflow-x: hidden;
+  .ov {
+    margin-left: 400px;
+    &::before {
+      content: '';
+      transform: rotate(2.13deg);
+      position: absolute;
+      width: 100%;
+      background: $yellow;
+      top: 0;
+      height: 90%;
+      margin-top: -8vh;
+    }
+  }
+  .menu{
+      position: relative;
+      margin-top: 50px;
+      padding: 0 141px;
+      li{
+          font-size: 14px;
+          border-bottom: 2px solid black;
+          padding: 0 10px;
+      }
+  }
+  .container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 150px;
+    position: relative;
+  }
+  .sub {
+    width: 200px;
+  }
+  .applyDiv {
+    margin-top: 32px;
+    button {
+      height: 64px;
+      width: 185px;
+      border-radius: 20px;
+      background-color: black;
+    }
+  }
+}
