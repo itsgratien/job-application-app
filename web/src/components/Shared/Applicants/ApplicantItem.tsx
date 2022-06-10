@@ -3,8 +3,9 @@ import classname from 'classnames';
 import style from './Style.module.scss';
 import { ApplicantItemPropsT, ApplicationStatusEnum } from '@/generated/Applicants';
 import { Icon } from '@iconify/react';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
 import { useStatusColor } from '@/hooks/UseStatusColor';
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/legacy/build/pdf.worker.min.js`;
 
 export const ApplicantItem = ({ item, handleView }: ApplicantItemPropsT) => {
   const { color } = useStatusColor({ status: item.status || ApplicationStatusEnum.New });
@@ -13,9 +14,9 @@ export const ApplicantItem = ({ item, handleView }: ApplicantItemPropsT) => {
     <li className={style.applicantItem}>
       <div className={style.resume}>
         <div className={style.pdf}>
-          <Document file={item.resume}>
-            <Page pageNumber={1} />
-          </Document>
+          <Document file={{ url: item.resume }} className="document">
+            <Page pageNumber={1}/>
+            </Document>
         </div>
       </div>
       <div className={style.details}>

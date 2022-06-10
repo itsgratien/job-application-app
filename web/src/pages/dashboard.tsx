@@ -37,59 +37,7 @@ const Dashboard: NextPage = () => {
                       email: 'johndoe@gmail.com',
                       phoneNumber: '+250786601005',
                       location: 'Rwanda/Kigali',
-                      resume: 'http://www.africau.edu/images/default/sample.pdf',
-                    }}
-                    handleView={() => ''}
-                  />
-                  <ApplicantItem
-                    item={{
-                      names: 'John Doe',
-                      email: 'johndoe@gmail.com',
-                      phoneNumber: '+250786601005',
-                      location: 'Rwanda/Kigali',
-                      resume: 'http://www.africau.edu/images/default/sample.pdf',
-                    }}
-                    handleView={() => ''}
-                  />
-                  <ApplicantItem
-                    item={{
-                      names: 'John Doe',
-                      email: 'johndoe@gmail.com',
-                      phoneNumber: '+250786601005',
-                      location: 'Rwanda/Kigali',
-                      resume: 'http://www.africau.edu/images/default/sample.pdf',
-                    }}
-                    handleView={() => ''}
-                  />
-                  <ApplicantItem
-                    item={{
-                      names: 'John Doe',
-                      email: 'johndoe@gmail.com',
-                      phoneNumber: '+250786601005',
-                      location: 'Rwanda/Kigali',
-                      resume: 'http://www.africau.edu/images/default/sample.pdf',
-                    }}
-                    handleView={() => ''}
-                  />
-                  <ApplicantItem
-                    item={{
-                      names: 'John Doe',
-                      email: 'johndoe@gmail.com',
-                      phoneNumber: '+250786601005',
-                      location: 'Rwanda/Kigali',
-                      resume: 'http://www.africau.edu/images/default/sample.pdf',
-                      status: ApplicationStatusEnum.Dropped,
-                    }}
-                    handleView={() => ''}
-                  />
-                  <ApplicantItem
-                    item={{
-                      names: 'John Doe',
-                      email: 'johndoe@gmail.com',
-                      phoneNumber: '+250786601005',
-                      location: 'Rwanda/Kigali',
-                      resume: 'http://www.africau.edu/images/default/sample.pdf',
-                      status: ApplicationStatusEnum.Passed,
+                      resume: 'https://gratien.vercel.app/resume.pdf',
                     }}
                     handleView={() => ''}
                   />

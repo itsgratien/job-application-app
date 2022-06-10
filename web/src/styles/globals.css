@@ -18,3 +18,12 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.document{
+  width: 100% !important;
+}
+
+.document canvas{
+  width: 100% !important;
+  height: 100% !important;
+}

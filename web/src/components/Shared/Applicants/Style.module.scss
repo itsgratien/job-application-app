@@ -19,9 +19,25 @@
       position: relative;
       width: 386px;
       margin: auto;
-      height: 100%;
-      background-color: red;
+      height: 154px;
       border-radius: 10px;
+      overflow-y: hidden;
+      overflow-x: hidden;
+      background-color: white;
+      &::after{
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(128, 255, 0, 0.11) 41.67%, #00ff9430 87.5%);
+      }
+    }
+    .document{
+      canvas{
+        width: 100%;
+      }
     }
   }
   .details {
