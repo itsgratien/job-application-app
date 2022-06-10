@@ -1,17 +1,9 @@
 import React from 'react';
 import style from './Style.module.scss';
 import classname from 'classnames';
+import { InputPropsT } from '@/generated/Applicants';
 
-interface Props {
-  type?: 'text' | 'email' | 'number' | 'file';
-  labelName: string;
-  placeholder?: string;
-  value: string;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  name: string;
-}
-
-export const Input = ({ labelName, type, placeholder, value, name, onChange }: Props) => {
+export const Input = ({ labelName, type, placeholder, value, name, onChange }: InputPropsT) => {
   return (
     <div className={style.input}>
       <label htmlFor="">{labelName}</label>

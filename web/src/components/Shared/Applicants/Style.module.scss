@@ -1,0 +1,48 @@
+@import '../../../styles/colors.scss';
+
+.applicantItem {
+  width: 530px;
+  border: 1px solid black;
+  border-radius: 10px;
+  position: relative;
+  cursor: pointer;
+  margin-top: 120px;
+  .resume {
+    width: 100%;
+    margin: auto;
+    height: 154px;
+    position: absolute;
+    top: -70px;
+    border-radius: 10px;
+    z-index: 10;
+    .pdf {
+      position: relative;
+      width: 386px;
+      margin: auto;
+      height: 100%;
+      background-color: red;
+      border-radius: 10px;
+    }
+  }
+  .details {
+    width: 100%;
+    margin-top: 50px;
+    position: relative;
+    padding: 48px 70px 20px 70px;
+    .info {
+      margin-left: 10px;
+      span {
+        font-size: 12px;
+      }
+    }
+    .status{
+        right: 70px;
+        top: 48px;
+        min-width: 80px;
+        height: 30px;
+        border-radius: 10px;
+        font-size: 12px;
+        font-weight: bold;
+    }
+  }
+}

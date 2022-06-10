@@ -1,25 +1,43 @@
-.dashboard {
-  margin-top: 60px;
-}
-.showcase {
-  height: 100vh;
-  margin-left: -80px;
-  position: relative;
-  &::after {
-    content: '';
-    position: absolute;
-    background-color: white;
-    transform: rotate(-2.77deg);
-    height: 120%;
-    width: 120%;
-  }
-}
+@import './colors.scss';
 
-.header {
-  padding-left: 300px;
-  padding-right: 69px;
-  ul {
-    display: flex;
-    justify-content: space-between;
+.dashboard {
+  padding-left: 153px;
+  padding-top: 160px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .container {
+    min-height: 100vh;
+    position: relative;
+    padding-top: 30px;
+    &::after {
+      content: '';
+      position: absolute;
+      background: white;
+      left: 0;
+      right: -5%;
+      bottom: -50px;
+      transform: rotate(-2.77deg);
+      top: 0;
+    }
+  }
+  .applicants{
+    position: relative;
+    z-index: 100;
+  }
+  .count{
+    margin-left: 560px;
+    margin-top: 40px;
+    .number{
+      width: 69px;
+      height: 45px;
+      border-radius: 5px;
+      background-color: $green;
+    }
+  }
+  .applicantItems{
+    margin-top: 150px;
+   ul{
+     margin-left: 354px;
+   }
   }
 }

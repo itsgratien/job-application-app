@@ -4,8 +4,8 @@ import style from '../styles/Home.module.scss';
 import classnames from 'classnames';
 import { Layout } from '@/components/Shared/Layout';
 import { ApplicationForm } from '@/components/ApplicationForm/ApplicationForm';
-import { Icon } from '@iconify/react';
 import { useRouter } from 'next/router';
+import { GoBack } from '@/components/Shared/GoBack';
 
 const Apply: NextPage = () => {
   const router = useRouter();
@@ -17,13 +17,7 @@ const Apply: NextPage = () => {
       <Layout>
         <div className={classnames(style.application, 'relative')}>
           <div className={classnames('flex items-center', style.title)}>
-            <button
-              type="button"
-              className={classnames('outline-none focus:outline-none')}
-              onClick={() => router.push('/')}
-            >
-              <Icon icon="eva:arrow-ios-back-fill" fontSize={60} />
-            </button>
+            <GoBack handleGoBack={() => router.push('/')} />
             <span className="font-bold">Application Form</span>
           </div>
           <div className={classnames(style.form, 'bg-white')}>
