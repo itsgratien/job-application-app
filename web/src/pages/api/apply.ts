@@ -15,7 +15,7 @@ routes.post(async (req: NextApiRequest, res: NextApiResponse) => {
 
     const save = await collection.insertOne(req.body);
 
-    return res.json({ message: 'Application saved successfully', data: save });
+    return res.json({ message: 'Application Saved Successfully', data: save });
   } catch (error) {
     return res.status(500).json({ error: 'Unable to apply due to internal server error' });
   }
