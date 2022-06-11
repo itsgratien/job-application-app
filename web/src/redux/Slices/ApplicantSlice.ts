@@ -7,12 +7,20 @@ const applicantSlice = createSlice({
   name: 'Applicant',
   initialState,
   reducers: {
-    apply: (state, action: PayloadAction<boolean>) => ({ ...state, applySuccess: action.payload }),
+    applySuccess: (state, action: PayloadAction<boolean>) => ({
+      ...state,
+      applySuccess: action.payload,
+    }),
+    applyLoading: (state, action: PayloadAction<boolean>) => ({
+      ...state,
+      applyLoading: action.payload,
+    }),
+    applyError: (state, action: PayloadAction<any>) => ({ ...state, applyError: action.payload }),
   },
 });
 
 const applicantReducer = applicantSlice.reducer;
 
-const { apply } = applicantSlice.actions;
+const { applyLoading, applyError, applySuccess } = applicantSlice.actions;
 
-export { apply, applicantReducer };
+export { applicantReducer, applyError, applyLoading, applySuccess };

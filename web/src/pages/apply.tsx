@@ -8,14 +8,15 @@ import { useRouter } from 'next/router';
 import { GoBack } from '@/components/Shared/GoBack';
 import { applyAction } from '@/redux/Actions/ApplicantActions';
 import { useAppDispatch } from '@/hooks/Redux';
+import { ApplicantT } from '@/generated/Applicants';
 
 const Apply: NextPage = () => {
   const router = useRouter();
 
   const dispatch = useAppDispatch();
 
-  const handleSubmit = () => {
-    dispatch(applyAction());
+  const handleSubmit = (values: ApplicantT) => {
+    dispatch(applyAction(values));
   };
 
   return (

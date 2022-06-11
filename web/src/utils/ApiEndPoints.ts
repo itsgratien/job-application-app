@@ -1,0 +1,4 @@
+export const apiEndPoints = {
+  apply: '/apply',
+  applicationDetail: (slug: string) => `/applicant/${slug}`,
+};
