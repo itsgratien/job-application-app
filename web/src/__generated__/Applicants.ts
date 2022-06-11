@@ -45,11 +45,26 @@ export interface ApplicationStatusPropsT {
   status: string;
 }
 
-export interface ApplicationDetailPropsT{
+export interface ApplicationDetailPropsT {
   item: ApplicantT;
   modify?: boolean;
 }
 
-export interface PdfViewPropsT{
+export interface PdfViewPropsT {
   url: string;
+}
+
+export interface ApplicantInitialStateT {
+  readonly applyLoading?: boolean;
+  readonly applySuccess?: boolean;
+  readonly applyError?: any;
+}
+
+export interface MessageInitialStateT {
+  readonly error?: string;
+  readonly success?: string;
+}
+
+export interface ApplicationFormPropsT {
+  handleSubmit: (values: ApplicantT) => void;
 }

@@ -4,11 +4,12 @@ import { ApplicationSchema } from './Schema';
 import { Input } from './Input';
 import style from './Style.module.scss';
 import classname from 'classnames';
+import { ApplicationFormPropsT } from '@/generated/Applicants';
 
-export const ApplicationForm = () => {
+export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
   const formik = useFormik({
     validationSchema: ApplicationSchema,
-    onSubmit: (e) => {},
+    onSubmit: handleSubmit,
     initialValues: { names: '', email: '', location: '', phoneNumber: '', resume: '' },
   });
 

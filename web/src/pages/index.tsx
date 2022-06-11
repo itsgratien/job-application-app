@@ -4,8 +4,11 @@ import style from '../styles/Home.module.scss';
 import { Logo } from '@/components/Shared/Logo';
 import { Layout } from '@/components/Shared/Layout';
 import classnames from 'classnames';
+import { useRouter } from 'next/router';
 
 const Home: NextPage = () => {
+  const router = useRouter();
+
   return (
     <>
       <Head>
@@ -34,6 +37,7 @@ const Home: NextPage = () => {
                   className={classnames(
                     'outline-none focus:outline-none bg-black text-white font-bold'
                   )}
+                  onClick={()=> router.push('/apply')}
                 >
                   Apply For Job
                 </button>

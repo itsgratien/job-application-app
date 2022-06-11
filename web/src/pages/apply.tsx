@@ -6,9 +6,18 @@ import { Layout } from '@/components/Shared/Layout';
 import { ApplicationForm } from '@/components/ApplicationForm/ApplicationForm';
 import { useRouter } from 'next/router';
 import { GoBack } from '@/components/Shared/GoBack';
+import { applyAction } from '@/redux/Actions/ApplicantActions';
+import { useAppDispatch } from '@/hooks/Redux';
 
 const Apply: NextPage = () => {
   const router = useRouter();
+
+  const dispatch = useAppDispatch();
+
+  const handleSubmit = () => {
+    dispatch(applyAction());
+  };
+
   return (
     <>
       <Head>
@@ -21,7 +30,7 @@ const Apply: NextPage = () => {
             <span className="font-bold">Application Form</span>
           </div>
           <div className={classnames(style.form, 'bg-white')}>
-            <ApplicationForm />
+            <ApplicationForm handleSubmit={handleSubmit} />
           </div>
         </div>
       </Layout>
