@@ -4,10 +4,9 @@ import style from '../../styles/Dashboard.module.scss';
 import { Layout } from '@/components/Shared/Layout';
 import classname from 'classnames';
 import { DashboardHeader } from '@/components/Shared/DashboardHeader';
-import { ApplicantItem } from '@/components/Shared/Applicants/ApplicantItem';
 import { ApplicationStatusEnum } from '@/generated/Applicants';
-import { Status } from '@/components/Shared/Applicants/Status';
 import { Details } from '@/components/Shared/Applicants/Details';
+import { PdfView } from '@/components/Shared/Applicants/PdfView';
 
 const ApplicantDetail: NextPage = () => {
   return (
@@ -33,8 +32,10 @@ const ApplicantDetail: NextPage = () => {
                     }}
                     modify
                   />
-                              </div>
-                              <div className={style.resume}></div>
+                </div>
+                <div className={style.resume}>
+                  <PdfView url={'https://gratien.vercel.app/resume.pdf'} />
+                </div>
               </div>
             </div>
           </div>

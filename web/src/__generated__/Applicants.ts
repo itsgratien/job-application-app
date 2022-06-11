@@ -49,3 +49,7 @@ export interface ApplicationDetailPropsT{
   item: ApplicantT;
   modify?: boolean;
 }
+
+export interface PdfViewPropsT{
+  url: string;
+}
