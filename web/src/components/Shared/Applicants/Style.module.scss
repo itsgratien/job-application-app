@@ -24,7 +24,7 @@
       overflow-y: hidden;
       overflow-x: hidden;
       background-color: white;
-      &::after{
+      &::after {
         content: '';
         position: absolute;
         top: 0;
@@ -34,8 +34,8 @@
         background: linear-gradient(180deg, rgba(128, 255, 0, 0.11) 41.67%, #00ff9430 87.5%);
       }
     }
-    .document{
-      canvas{
+    .document {
+      canvas {
         width: 100%;
       }
     }
@@ -45,20 +45,17 @@
     margin-top: 50px;
     position: relative;
     padding: 48px 70px 20px 70px;
-    .info {
-      margin-left: 10px;
-      span {
-        font-size: 12px;
-      }
-    }
-    .status{
-        right: 70px;
-        top: 48px;
-        min-width: 80px;
-        height: 30px;
-        border-radius: 10px;
-        font-size: 12px;
-        font-weight: bold;
-    }
   }
+}
+
+.applicationStatus {
+  min-width: 80px;
+  height: 30px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.applicationDetails {
+  width: 100%;
 }

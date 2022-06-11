@@ -40,3 +40,12 @@ export interface LayoutPropsT {
 export interface UseStatusColorPropsT {
   status: ApplicationStatusEnum;
 }
+
+export interface ApplicationStatusPropsT {
+  status: string;
+}
+
+export interface ApplicationDetailPropsT{
+  item: ApplicantT;
+  modify?: boolean;
+}
