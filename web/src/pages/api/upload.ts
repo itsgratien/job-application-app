@@ -3,35 +3,49 @@ import nc from 'next-connect';
 import { onError, onNoMatch } from '@/utils/ApiErrorHandler';
 import multer from 'multer';
 import { CloudinaryStorage } from 'multer-storage-cloudinary';
-import cloudinary from 'cloudinary';
+import { v2 as cloudinary } from 'cloudinary';
 
-cloudinary.v2.config({
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+cloudinary.config({
   cloud_name: process.env.CLOUDINARY_NAME,
   api_key: process.env.CLOUDINARY_API_KEY,
   api_secret: process.env.CLOUDINARY_SECRET_KEY,
 });
 
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary.v2,
+  cloudinary,
   params: async (req) => {
-    console.log('red', req);
     return {
-      //   format: 'pdf',
+      format: 'pdf',
       folder: 'applicants',
       public_id: Math.random().toString(),
     };
   },
 });
 
-const upload = multer({ storage, limits: { fileSize: 10000000 } });
+const upload = multer({
+  storage,
+  fileFilter: (req, file, cb) => {
+    if (file.mimetype !== 'application/pdf') {
+      cb(new Error('File Should Be PDF'));
+    } else {
+      cb(null, true);
+    }
+  },
+});
+
 const routes = nc({
   onError,
   onNoMatch,
 });
 
-routes.use(upload.single('resume')).post(async (req: NextApiRequest, res) => {
-  console.log('files', (req as any).file);
-  res.json({ data: 'ok man' });
+routes.use(upload.single('resume')).post(async (req: NextApiRequest, res: NextApiResponse) => {
+  return res.json({ data: (req as any).file, message: 'Uploaded Successfully' });
 });
 
 export default routes;

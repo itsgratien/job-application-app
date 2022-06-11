@@ -72,3 +72,13 @@ export interface UseDisablePropsT {
   error?: boolean;
   success?: boolean;
 }
+
+export interface UploadResponseT {
+  fieldname: string;
+  originalname: string;
+  encoding: string;
+  mimetype: string;
+  path: string;
+  size: number;
+  filename: string;
+}

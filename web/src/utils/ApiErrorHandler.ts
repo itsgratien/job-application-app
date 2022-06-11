@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export const onError = (error: any, req: NextApiRequest, res: NextApiResponse) => {
-  console.error(error);
+  console.error('Error:', error.message);
   return res.status(500).json({ error: 'Internal Server Error' });
 };
 
