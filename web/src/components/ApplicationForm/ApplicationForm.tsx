@@ -4,16 +4,44 @@ import { ApplicationSchema } from './Schema';
 import { Input } from './Input';
 import style from './Style.module.scss';
 import classname from 'classnames';
-import { ApplicationFormPropsT } from '@/generated/Applicants';
+import { applyAction } from '@/redux/Actions/ApplicantActions';
+import { useAppDispatch, useAppSelector } from '@/hooks/Redux';
+import { useDisableButton } from '@/hooks/UseDisableButton';
+import BeatLoader from 'react-spinners/BeatLoader';
 
-export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
+export const ApplicationForm = () => {
+  const dispatch = useAppDispatch();
+
+  const selector = useAppSelector((state) => ({
+    loading: state.applicantReducer.applyLoading,
+    error: state.applicantReducer.applyError,
+    success: state.applicantReducer.applySuccess,
+  }));
+
   const formik = useFormik({
     validationSchema: ApplicationSchema,
-    onSubmit: handleSubmit,
+    onSubmit: (values) => dispatch(applyAction(values)),
     initialValues: { names: '', email: '', location: '', phoneNumber: '', resume: '' },
   });
 
-  const { errors, isValid, values } = formik;
+  const { errors, isValid, values, validateForm, resetForm } = formik;
+
+  const { disabled } = useDisableButton({
+    isValid,
+    error: selector.error || false,
+    loading: selector.loading,
+    success: selector.success,
+  });
+
+  React.useEffect(() => {
+    validateForm();
+  }, []);
+
+  React.useEffect(() => {
+    if (selector.success) {
+      resetForm();
+    }
+  }, [selector.success, resetForm]);
 
   return (
     <form action="" onSubmit={formik.handleSubmit} className={classname(style.appForm, 'relative')}>
@@ -26,6 +54,7 @@ export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
             onChange={formik.handleChange}
             type="text"
             name="names"
+            error={errors.names}
           />
         </div>
         <div className={style.group}>
@@ -36,6 +65,7 @@ export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
             onChange={formik.handleChange}
             type="email"
             name="email"
+            error={errors.email}
           />
         </div>
       </div>
@@ -48,6 +78,7 @@ export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
             onChange={formik.handleChange}
             type="text"
             name="location"
+            error={errors.location}
           />
         </div>
         <div className={style.group}>
@@ -58,6 +89,7 @@ export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
             onChange={formik.handleChange}
             type="text"
             name="phoneNumber"
+            error={errors.phoneNumber}
           />
         </div>
       </div>
@@ -70,14 +102,17 @@ export const ApplicationForm = ({ handleSubmit }: ApplicationFormPropsT) => {
             onChange={formik.handleChange}
             type="file"
             name="resume"
+            error={errors.resume}
           />
         </div>
       </div>
       <button
         type="submit"
         className={classname('outline-none focus:outline-none font-bold', style.submitBtn)}
+        disabled={disabled}
+        style={{ cursor: disabled ? 'not-allowed' : 'pointer', opacity: disabled ? '0.5' : '1' }}
       >
-        Submit
+        {selector.loading ? <BeatLoader size={15} /> : 'Submit'}
       </button>
     </form>
   );

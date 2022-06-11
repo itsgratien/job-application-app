@@ -27,6 +27,7 @@ export interface InputPropsT {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
+  error?: string;
 }
 
 export interface GoBackPropsT {
@@ -62,9 +63,12 @@ export interface ApplicantInitialStateT {
 
 export interface MessageInitialStateT {
   readonly error?: string;
-  readonly success?: string;
+  readonly message?: string;
 }
 
-export interface ApplicationFormPropsT {
-  handleSubmit: (values: ApplicantT) => void;
+export interface UseDisablePropsT {
+  isValid: boolean;
+  loading?: boolean;
+  error?: boolean;
+  success?: boolean;
 }

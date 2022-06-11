@@ -3,9 +3,20 @@ import style from './Style.module.scss';
 import classname from 'classnames';
 import { InputPropsT } from '@/generated/Applicants';
 
-export const Input = ({ labelName, type, placeholder, value, name, onChange }: InputPropsT) => {
+export const Input = ({
+  labelName,
+  type,
+  placeholder,
+  value,
+  name,
+  onChange,
+  error,
+}: InputPropsT) => {
   return (
-    <div className={style.input}>
+    <div
+      className={style.input}
+      style={{ borderBottom: error ? '2px solid red' : '1px solid black' }}
+    >
       <label htmlFor="">{labelName}</label>
       <input
         type={type || 'text'}
