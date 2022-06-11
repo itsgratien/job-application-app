@@ -17,11 +17,56 @@ export const Details = ({ item, modify }: ApplicationDetailPropsT) => {
 
   const statusStyles = modify ? { top: 0, right: '0' } : { top: '48px', right: '70px' };
 
+  const [edit, setEdit] = React.useState<boolean>(false);
+
+  const [value, setValue] = React.useState<string>(item.status || '');
+
+  const handleSaveStatus = () => {
+    setEdit(false);
+  };
+
   return (
     <div className={style.applicationDetails}>
       <div className={classname('font-bold text-20')}>{item.names}</div>
-      <div className={classname('absolute')} style={statusStyles}>
-        <Status status={item.status || ApplicationStatusEnum.New} />
+      <div className={classname('absolute flex items-center')} style={statusStyles}>
+        {!edit ? (
+          <>
+            <Status status={item.status || ApplicationStatusEnum.New} />
+            <div className={style.edit}>
+              <button
+                type="button"
+                className={classname('outline-none focus:outline-none')}
+                onClick={() => setEdit(true)}
+              >
+                <Icon icon="ci:edit" />
+              </button>
+            </div>
+          </>
+        ) : (
+          <>
+            <select
+              className={classname('outline-none focus:outline-none', style.select)}
+              value={value}
+              onChange={(e) => setValue(e.target.value)}
+            >
+              <option value="">Select status</option>
+              {Object.values(ApplicationStatusEnum).map((st, stKey) => (
+                <option value={st} key={stKey}>
+                  {st}
+                </option>
+              ))}
+            </select>
+            <div className={style.edit}>
+              <button
+                type="button"
+                className={classname('outline-none focus:outline-none', style.accept)}
+                onClick={handleSaveStatus}
+              >
+                <Icon icon="bi:check" fontSize={20} />
+              </button>
+            </div>
+          </>
+        )}
       </div>
       <div className={classname('flex items-center')} style={infoStyles}>
         <Icon icon="uil:voicemail-rectangle" fontSize={15} color="black" />
@@ -35,6 +80,14 @@ export const Details = ({ item, modify }: ApplicationDetailPropsT) => {
           {item.location}
         </span>
       </div>
+      {modify && (
+        <div className={classname('flex items-center')} style={infoStyles}>
+          <Icon icon="bi:phone" fontSize={15} color="black" />
+          <span className="ml-2" style={spanStyles}>
+            {item.phoneNumber}
+          </span>
+        </div>
+      )}
     </div>
   );
 };
