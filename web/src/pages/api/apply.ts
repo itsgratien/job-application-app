@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { connectDB } from '@/utils/MongoClient';
 import nc from 'next-connect';
 import { onError, onNoMatch } from '@/utils/ApiErrorHandler';
+import slug from 'slugify';
 
 const routes = nc({
   onNoMatch,
@@ -13,7 +14,11 @@ routes.post(async (req: NextApiRequest, res: NextApiResponse) => {
     const db = await connectDB();
     const collection = db.collection('applicants');
 
-    const save = await collection.insertOne(req.body);
+    const random = Math.random() * 5000;
+
+    const names = req.body.names.toLowerCase();
+
+    const save = await collection.insertOne({ ...req.body, slug: slug(`${names} ${random}`) });
 
     return res.json({ message: 'Application Saved Successfully', data: save });
   } catch (error) {
