@@ -1,6 +1,7 @@
 import React from 'react';
 import { FormikProps } from 'formik';
 import { Document } from 'mongodb';
+import { ParsedUrlQuery } from 'querystring';
 
 export enum ApplicationStatusEnum {
   Passed = 'Passed',
@@ -105,4 +106,12 @@ export interface ApplicantCollectionT extends Document, ApplicantT {
   slug: string;
   createdAt: number;
   updatedAt: number;
+}
+
+export interface ApplicationDetailPropsT {
+  data?: ApplicantCollectionT;
+}
+
+export interface ApplicationDetailParamsT extends ParsedUrlQuery {
+  slug: string;
 }

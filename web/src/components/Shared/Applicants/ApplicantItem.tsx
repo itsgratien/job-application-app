@@ -6,7 +6,7 @@ import { PdfView } from './PdfView';
 
 export const ApplicantItem = ({ item, handleView }: ApplicantItemPropsT) => {
   return (
-    <li className={style.applicantItem}>
+    <li className={style.applicantItem} onClick={handleView}>
       <div className={style.resume}>
         <div className={style.pdf}>
           <PdfView url={item.resume} />
