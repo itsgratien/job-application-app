@@ -5,7 +5,8 @@ export interface ActionSetupT {
   onError: (values: any) => void;
   url: string;
   method: Method;
-  contentType?: string;
+  contentType?: 'application/json' | 'multipart/form-data';
   responseType?: ResponseType;
   data?: any;
+  onProgress?: (value: number) => void;
 }

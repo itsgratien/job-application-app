@@ -28,6 +28,8 @@ export interface InputPropsT {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   name: string;
   error?: string;
+  filePlaceholder?: string;
+  fileLoading?: boolean;
 }
 
 export interface GoBackPropsT {
