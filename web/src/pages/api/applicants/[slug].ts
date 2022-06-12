@@ -16,4 +16,23 @@ routes.get(async (req: NextApiRequest, res: NextApiResponse) => {
   return res.json({ data: find });
 });
 
+routes.put(async (req: NextApiRequest, res: NextApiResponse) => {
+  const db = await connectDB();
+
+  const collection = db.collection<ApplicantCollectionT>('applicants');
+
+  const find = await collection.findOne({ slug: req.query.slug });
+
+  if (!find) {
+    return res.status(404).json({ error: 'Application Not Found' });
+  }
+
+  const update = await collection.updateOne(
+    { slug: req.query.slug },
+    { $set: { status: req.body.status } }
+  );
+
+  return res.json({ message: 'Updated Successfully', data: update });
+});
+
 export default routes;

@@ -54,10 +54,18 @@ export interface ApplicationStatusPropsT {
 export interface ApplicationDetailPropsT {
   item: ApplicantT;
   modify?: boolean;
+  handleChangeStatus?: (status: string) => void;
+  changeStatusSuccess?: ChangeStatusSuccessT;
+  message?: string;
 }
 
 export interface PdfViewPropsT {
   url: string;
+}
+
+export interface ChangeStatusSuccessT {
+  slug: string;
+  status: string;
 }
 
 export interface ApplicantInitialStateT {
@@ -65,6 +73,10 @@ export interface ApplicantInitialStateT {
   readonly applySuccess?: boolean;
   readonly applyError?: any;
   readonly scroll?: boolean;
+  readonly applicationDetail?: ApplicantCollectionT;
+  readonly changeStatusLoading?: boolean;
+  readonly changeStatusSuccess?: ChangeStatusSuccessT;
+  readonly changeStatusError?: any;
 }
 
 export interface MessageInitialStateT {
@@ -114,5 +126,10 @@ export interface ApplicationDetailPropsT {
 }
 
 export interface ApplicationDetailParamsT extends ParsedUrlQuery {
+  slug: string;
+}
+
+export interface ChangeStatusParamT {
+  status: string;
   slug: string;
 }

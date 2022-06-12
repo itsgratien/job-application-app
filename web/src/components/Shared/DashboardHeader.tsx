@@ -14,7 +14,10 @@ export const DashboardHeader = ({ allowBack, title }: DashboardHeaderPropsT) => 
   return (
     <div
       className={classname('relative', style.header)}
-      style={{ background: selector.scroll ? 'white' : 'none', paddingTop: selector.scroll ? '20px': 0 }}
+      style={{
+        background: selector.scroll ? 'white' : 'none',
+        paddingTop: selector.scroll ? '20px' : 0,
+      }}
     >
       <ul>
         <li className="flex items-center">
@@ -28,6 +31,7 @@ export const DashboardHeader = ({ allowBack, title }: DashboardHeaderPropsT) => 
               'outline-none focus:outline-none font-bold text-15',
               style.logoutBtn
             )}
+            onClick={() => router.push('/')}
           >
             Logout
           </button>

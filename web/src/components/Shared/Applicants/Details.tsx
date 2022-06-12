@@ -5,7 +5,13 @@ import { ApplicationStatusEnum, ApplicationDetailPropsT } from '@/generated/Appl
 import { Status } from './Status';
 import { Icon } from '@iconify/react';
 
-export const Details = ({ item, modify }: ApplicationDetailPropsT) => {
+export const Details = ({
+  item,
+  modify,
+  handleChangeStatus,
+  changeStatusSuccess,
+  message,
+}: ApplicationDetailPropsT) => {
   const spanStyles = modify
     ? {
         fontSize: '13px',
@@ -22,8 +28,16 @@ export const Details = ({ item, modify }: ApplicationDetailPropsT) => {
   const [value, setValue] = React.useState<string>(item.status || '');
 
   const handleSaveStatus = () => {
-    setEdit(false);
+    if (value && handleChangeStatus) {
+      handleChangeStatus(value);
+    }
   };
+
+  React.useEffect(() => {
+    if (changeStatusSuccess && message) {
+      setEdit(false);
+    }
+  }, [changeStatusSuccess, message]);
 
   return (
     <div className={style.applicationDetails}>

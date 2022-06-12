@@ -3,4 +3,5 @@ export const apiEndPoints = {
   applicationDetail: (slug: string) => `/applicants/${slug}`,
   upload: '/upload',
   applicants: () => '/applicants',
+  changeStatus: (slug: string) => `/applicants/${slug}`,
 };

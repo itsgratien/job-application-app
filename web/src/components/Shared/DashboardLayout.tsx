@@ -13,12 +13,16 @@ export const DashboardLayout = ({ children, allowBack, title }: DashboardLayoutT
   const handleScroll = (e: React.UIEvent<HTMLDivElement>) => {
     const { scrollTop } = e.target as any;
 
-    if (scrollTop > 200) {
+    if (scrollTop > 150) {
       dispatch(setScroll(true));
     } else {
       dispatch(setScroll(false));
     }
   };
+
+  React.useEffect(() => {
+    dispatch(setScroll(false));
+  }, [dispatch])
 
   return (
     <Layout>

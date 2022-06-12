@@ -22,6 +22,7 @@ const Home: NextPage = () => {
                 <button
                   type="button"
                   className={classnames('outline-none focus:outline-none font-bold')}
+                  onClick={() => router.push('/dashboard')}
                 >
                   Login as HR
                 </button>
@@ -37,7 +38,7 @@ const Home: NextPage = () => {
                   className={classnames(
                     'outline-none focus:outline-none bg-black text-white font-bold'
                   )}
-                  onClick={()=> router.push('/apply')}
+                  onClick={() => router.push('/apply')}
                 >
                   Apply For Job
                 </button>

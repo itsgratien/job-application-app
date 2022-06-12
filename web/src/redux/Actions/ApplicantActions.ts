@@ -2,7 +2,7 @@ import { Dispatch } from '@reduxjs/toolkit';
 import * as applicantSlice from '@/redux/Slices/ApplicantSlice';
 import { action } from '@/utils/ActionSetup';
 import { apiEndPoints } from '@/utils/ApiEndPoints';
-import { ApplicantT } from '@/generated/Applicants';
+import { ApplicantT, ChangeStatusParamT } from '@/generated/Applicants';
 import * as messageSlice from '@/redux/Slices/MessageSlice';
 
 export const applyAction = (values: ApplicantT) => async (dispatch: Dispatch) => {
@@ -23,3 +23,24 @@ export const applyAction = (values: ApplicantT) => async (dispatch: Dispatch) =>
     },
   });
 };
+
+export const changeApplicationStatusAction =
+  (values: ChangeStatusParamT) => async (dispatch: Dispatch) => {
+    dispatch(applicantSlice.changeStatusLoading(true));
+
+    return action({
+      method: 'PUT',
+      url: apiEndPoints.changeStatus(values.slug),
+      data: values,
+      onError: (e) => {
+        dispatch(applicantSlice.changeStatusLoading(false));
+        dispatch(applicantSlice.changeStatusError(e.data));
+        dispatch(messageSlice.setError(e.data.error || 'Internal Server Error'));
+      },
+      onSuccess: (res) => {
+        dispatch(applicantSlice.changeStatusLoading(false));
+        dispatch(messageSlice.setMessage(res.message));
+        dispatch(applicantSlice.changeStatusSuccess(values));
+      },
+    });
+  };
