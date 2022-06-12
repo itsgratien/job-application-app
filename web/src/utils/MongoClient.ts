@@ -1,7 +1,7 @@
 import { MongoClient, ServerApiVersion } from 'mongodb';
 
 export const connectDB = async () => {
-  const client = new MongoClient(process.env.DATABASE_URL || '', {
+  const client = new MongoClient(process.env.DATABASE_URL || 'mongodb://localhost:27017', {
     serverApi: ServerApiVersion.v1,
   });
 

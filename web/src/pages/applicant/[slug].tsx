@@ -75,7 +75,7 @@ const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
 export default ApplicantDetail;
 
 export const getStaticPaths = async () => {
-  const url = `${process.env.API_URL}/${apiEndPoints.applicants()}`;
+  const url = `${process.env.API_URL}${apiEndPoints.applicants()}`;
   const res = await fetch(url);
   const data = await res.json();
   const paths = data.data.map((item: ApplicantCollectionT) => ({ params: { slug: item.slug } }));
