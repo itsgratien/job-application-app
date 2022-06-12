@@ -16,11 +16,12 @@ const applicantSlice = createSlice({
       applyLoading: action.payload,
     }),
     applyError: (state, action: PayloadAction<any>) => ({ ...state, applyError: action.payload }),
+    setScroll: (state, action: PayloadAction<boolean>) => ({ ...state, scroll: action.payload }),
   },
 });
 
 const applicantReducer = applicantSlice.reducer;
 
-const { applyLoading, applyError, applySuccess } = applicantSlice.actions;
+const { applyLoading, applyError, applySuccess, setScroll } = applicantSlice.actions;
 
-export { applicantReducer, applyError, applyLoading, applySuccess };
+export { applicantReducer, applyError, applyLoading, applySuccess, setScroll };

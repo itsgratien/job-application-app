@@ -4,12 +4,18 @@ import style from './Style.module.scss';
 import { GoBack } from './GoBack';
 import { DashboardHeaderPropsT } from '@/generated/Dashboard';
 import { useRouter } from 'next/router';
+import { useAppSelector } from '@/hooks/Redux';
 
 export const DashboardHeader = ({ allowBack, title }: DashboardHeaderPropsT) => {
   const router = useRouter();
 
+  const selector = useAppSelector((state) => ({ scroll: state.applicantReducer.scroll }));
+
   return (
-    <div className={classname('relative', style.header)}>
+    <div
+      className={classname('relative', style.header)}
+      style={{ background: selector.scroll ? 'white' : 'none', paddingTop: selector.scroll ? '20px': 0 }}
+    >
       <ul>
         <li className="flex items-center">
           {allowBack && <GoBack handleGoBack={() => router.back()} />}

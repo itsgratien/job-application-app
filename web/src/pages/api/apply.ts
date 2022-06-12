@@ -15,7 +15,7 @@ routes.post(async (req: NextApiRequest, res: NextApiResponse) => {
     const db = await connectDB();
     const collection = db.collection<ApplicantCollectionT>('applicants');
 
-    const random = Math.random() * 5000;
+    const random = (Math.random() * 5000) * Date.now();
 
     const names = req.body.names.toLowerCase();
 

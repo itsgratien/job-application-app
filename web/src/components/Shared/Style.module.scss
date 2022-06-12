@@ -10,7 +10,6 @@
   .ov {
     margin-left: 400px;
     padding-bottom: 180px;
-    padding-top: 40px;
     &::before {
       content: '';
       transform: rotate(2.13deg);
@@ -37,5 +36,31 @@
     border-radius: 20px;
     width: 100px;
     height: 50px;
+  }
+}
+
+.dashboard {
+  padding-left: 153px;
+  padding-top: 160px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  .container {
+    min-height: 100vh;
+    position: relative;
+    padding-top: 30px;
+    &::after {
+      content: '';
+      position: absolute;
+      background: white;
+      left: 0;
+      right: -5%;
+      bottom: -50px;
+      transform: rotate(-2.77deg);
+      top: 0;
+    }
+  }
+  .applicants{
+    position: relative;
+    z-index: 100;
   }
 }

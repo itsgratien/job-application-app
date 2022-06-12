@@ -1,55 +1,30 @@
 @import './colors.scss';
 
-.dashboard {
-  padding-left: 153px;
-  padding-top: 160px;
-  overflow-x: hidden;
-  overflow-y: auto;
-  .container {
-    min-height: 100vh;
-    position: relative;
-    padding-top: 30px;
-    &::after {
-      content: '';
-      position: absolute;
-      background: white;
-      left: 0;
-      right: -5%;
-      bottom: -50px;
-      transform: rotate(-2.77deg);
-      top: 0;
-    }
+.count {
+  margin-left: 560px;
+  margin-top: 40px;
+  .number {
+    width: 69px;
+    height: 45px;
+    border-radius: 5px;
+    background-color: $green;
   }
-  .applicants{
-    position: relative;
-    z-index: 100;
-  }
-  .count{
-    margin-left: 560px;
-    margin-top: 40px;
-    .number{
-      width: 69px;
-      height: 45px;
-      border-radius: 5px;
-      background-color: $green;
-    }
-  }
-  .applicantItems{
-    margin-top: 150px;
-   ul{
-     margin-left: 354px;
-   }
+}
+.applicantItems {
+  margin-top: 150px;
+  ul {
+    margin-left: 354px;
   }
 }
 
-.applicationDetails{
+.applicationDetails {
   margin-left: 260px;
   margin-top: 70px;
-  .data{
+  .data {
     width: 700px;
     position: relative;
   }
-  .resume{
+  .resume {
     width: 800px;
     height: auto;
     border: 1px solid #f8f8f8;

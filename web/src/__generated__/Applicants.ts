@@ -64,6 +64,7 @@ export interface ApplicantInitialStateT {
   readonly applyLoading?: boolean;
   readonly applySuccess?: boolean;
   readonly applyError?: any;
+  readonly scroll?: boolean;
 }
 
 export interface MessageInitialStateT {

@@ -1,9 +1,7 @@
 import type { NextPage, GetStaticProps } from 'next';
 import Head from 'next/head';
 import style from '../../styles/Dashboard.module.scss';
-import { Layout } from '@/components/Shared/Layout';
 import classname from 'classnames';
-import { DashboardHeader } from '@/components/Shared/DashboardHeader';
 import {
   ApplicantCollectionT,
   ApplicationDetailPropsT,
@@ -13,6 +11,7 @@ import { Details } from '@/components/Shared/Applicants/Details';
 import { PdfView } from '@/components/Shared/Applicants/PdfView';
 import { apiEndPoints } from '@/utils/ApiEndPoints';
 import Loading from 'react-spinners/RingLoader';
+import { DashboardLayout } from '@/components/Shared/DashboardLayout';
 
 const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
   if (!data) {
@@ -27,26 +26,16 @@ const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
       <Head>
         <title>{data.names}</title>
       </Head>
-      <Layout>
-        <DashboardHeader allowBack title="Application detail" />
-        <div className={classname('fixed inset-0', style.dashboard)}>
-          <div className={style.container}>
-            <div className={style.applicants}>
-              <div className={classname('relative', style.applicationDetails)}>
-                <div className={style.data}>
-                  <Details
-                    item={data}
-                    modify
-                  />
-                </div>
-                <div className={style.resume}>
-                  <PdfView url={data.resume} />
-                </div>
-              </div>
-            </div>
+      <DashboardLayout allowBack title="Application detail">
+        <div className={classname('relative', style.applicationDetails)}>
+          <div className={style.data}>
+            <Details item={data} modify />
+          </div>
+          <div className={style.resume}>
+            <PdfView url={data.resume} />
           </div>
         </div>
-      </Layout>
+      </DashboardLayout>
     </>
   );
 };
