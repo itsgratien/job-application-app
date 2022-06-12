@@ -47,15 +47,19 @@ export const Details = ({
         {!edit ? (
           <>
             <Status status={item.status || ApplicationStatusEnum.New} />
-            <div className={style.edit}>
-              <button
-                type="button"
-                className={classname('outline-none focus:outline-none')}
-                onClick={() => setEdit(true)}
-              >
-                <Icon icon="ci:edit" />
-              </button>
-            </div>
+            {modify ? (
+              <div className={style.edit}>
+                <button
+                  type="button"
+                  className={classname('outline-none focus:outline-none')}
+                  onClick={() => setEdit(true)}
+                >
+                  <Icon icon="ci:edit" />
+                </button>
+              </div>
+            ) : (
+              <></>
+            )}
           </>
         ) : (
           <>
