@@ -46,6 +46,7 @@ export const ApplicationForm = () => {
 
   React.useEffect(() => {
     validateForm();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
