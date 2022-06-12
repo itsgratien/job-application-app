@@ -30,7 +30,7 @@ export const Message = () => {
     <>
       <Toaster
         toastOptions={{
-          style: { fontSize: '12px', padding: '10px' },
+          style: { fontSize: '14px', padding: '15px' },
           success: { style: { background: '#FAFF00' } },
           error: { style: { background: '#ff0f0f', color: 'white' } },
         }}

@@ -1,5 +1,6 @@
 import React from 'react';
 import { FormikProps } from 'formik';
+import { Document } from 'mongodb';
 
 export enum ApplicationStatusEnum {
   Passed = 'Passed',
@@ -98,4 +99,10 @@ export interface UploadResumePropsT {
     resume?: string;
   };
   formik: FormikProps<any>;
+}
+
+export interface ApplicantCollectionT extends Document, ApplicantT {
+  slug: string;
+  createdAt: number;
+  updatedAt: number;
 }

@@ -55,7 +55,7 @@ export const ApplicationForm = () => {
   }, [selector.success, resetForm]);
 
   return (
-    <form action="" onSubmit={formik.handleSubmit} className={classname(style.appForm, 'relative')}>
+    <form onSubmit={formik.handleSubmit} className={classname(style.appForm, 'relative')}>
       <div className={classname('flex', style.section)}>
         <div className={style.group}>
           <Input
