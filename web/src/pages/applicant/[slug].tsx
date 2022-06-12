@@ -12,13 +12,10 @@ import {
 import { Details } from '@/components/Shared/Applicants/Details';
 import { PdfView } from '@/components/Shared/Applicants/PdfView';
 import { apiEndPoints } from '@/utils/ApiEndPoints';
-import { useRouter } from 'next/router';
 import Loading from 'react-spinners/RingLoader';
 
 const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
-  const router = useRouter();
-
-  if (router.isFallback || !data) {
+  if (!data) {
     return (
       <div className="flex items-center justify-center w-full h-screen">
         <Loading />
@@ -63,7 +60,7 @@ export const getStaticPaths = async () => {
   const paths = data.data.map((item: ApplicantCollectionT) => ({ params: { slug: item.slug } }));
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 };
 
