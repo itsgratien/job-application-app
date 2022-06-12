@@ -75,7 +75,7 @@ export default Dashboard;
 
 export const getStaticProps = async () => {
   try {
-    const url = `${process.env.API_URL}/${apiEndPoints.applicants()}`;
+    const url = `${process.env.API_URL}${apiEndPoints.applicants()}`;
     const res = await fetch(url);
     const data = await res.json();
     return {

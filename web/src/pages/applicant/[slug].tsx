@@ -87,7 +87,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const { slug } = context.params as ApplicationDetailParamsT;
-  const url = `${process.env.API_URL}/${apiEndPoints.applicationDetail(slug)}`;
+  const url = `${process.env.API_URL}${apiEndPoints.applicationDetail(slug)}`;
 
   const res = await fetch(url);
 

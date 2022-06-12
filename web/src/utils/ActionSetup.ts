@@ -15,7 +15,7 @@ export const action = async ({
     const res = await axios()({
       method,
       responseType,
-      headers: { contentType: contentType || 'application/json' },
+      headers: { ContentType: contentType || 'application/json' },
       url,
       data,
       onUploadProgress: (event) => {
