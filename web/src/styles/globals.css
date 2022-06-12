@@ -19,11 +19,16 @@ a {
   box-sizing: border-box;
 }
 
-.document{
+.document {
   width: 100% !important;
 }
 
-.document canvas{
+.document canvas {
   width: 100% !important;
   height: 100% !important;
+}
+
+.loadingScreen {
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 500;
 }
