@@ -1,4 +1,5 @@
 import React from 'react';
+import { FormikProps } from 'formik';
 
 export enum ApplicationStatusEnum {
   Passed = 'Passed',
@@ -83,4 +84,18 @@ export interface UploadResponseT {
   path: string;
   size: number;
   filename: string;
+}
+
+export interface UploadResumePropsT {
+  values: {
+    resume: string;
+    fileLoading?: boolean;
+    filePlaceholder?: string;
+    fileName?: string;
+    resumeFile?: any;
+  };
+  errors: {
+    resume?: string;
+  };
+  formik: FormikProps<any>;
 }
