@@ -1,13 +1,9 @@
 import React from 'react';
-import type { NextPage, GetStaticProps } from 'next';
+import type { NextPage, GetServerSideProps } from 'next';
 import Head from 'next/head';
 import style from '../../styles/Dashboard.module.scss';
 import classname from 'classnames';
-import {
-  ApplicantCollectionT,
-  ApplicationDetailPropsT,
-  ApplicationDetailParamsT,
-} from '@/generated/Applicants';
+import { ApplicationDetailPropsT, ApplicationDetailParamsT } from '@/generated/Applicants';
 import { Details } from '@/components/Shared/Applicants/Details';
 import { PdfView } from '@/components/Shared/Applicants/PdfView';
 import { apiEndPoints } from '@/utils/ApiEndPoints';
@@ -76,19 +72,8 @@ const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
 
 export default ApplicantDetail;
 
-export const getStaticPaths = async () => {
-  const url = `${process.env.API_URL}${apiEndPoints.applicants()}`;
-  const res = await fetch(url);
-  const data = await res.json();
-  const paths = data.data.map((item: ApplicantCollectionT) => ({ params: { slug: item.slug } }));
-  return {
-    paths,
-    fallback: false,
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (context) => {
-  const { slug } = context.params as ApplicationDetailParamsT;
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const { slug } = params as ApplicationDetailParamsT;
   const url = `${process.env.API_URL}${apiEndPoints.applicationDetail(slug)}`;
 
   const res = await fetch(url);

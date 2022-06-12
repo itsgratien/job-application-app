@@ -73,7 +73,7 @@ const Dashboard: NextPage<DashboardPropsT> = ({ data, totalItems, error }) => {
 
 export default Dashboard;
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   try {
     const url = `${process.env.API_URL}${apiEndPoints.applicants()}`;
     const res = await fetch(url);
