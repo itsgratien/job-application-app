@@ -17,6 +17,8 @@ export const ApplicationForm = () => {
     loading: state.applicantReducer.applyLoading,
     error: state.applicantReducer.applyError,
     success: state.applicantReducer.applySuccess,
+    message: state.messageReducer.message,
+    uploadedSuccess: state.applicantReducer.uploadedSuccess,
   }));
 
   const formik = useFormik({
@@ -35,7 +37,7 @@ export const ApplicationForm = () => {
     },
   });
 
-  const { errors, isValid, values, validateForm, resetForm } = formik;
+  const { errors, isValid, values, validateForm, resetForm, setFieldValue } = formik;
 
   const { disabled } = useDisableButton({
     isValid,
@@ -46,7 +48,7 @@ export const ApplicationForm = () => {
 
   React.useEffect(() => {
     validateForm();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   React.useEffect(() => {
@@ -54,6 +56,12 @@ export const ApplicationForm = () => {
       resetForm();
     }
   }, [selector.success, resetForm]);
+
+  React.useEffect(() => {
+    if (selector.uploadedSuccess && selector.message) {
+      setFieldValue('resume', selector.uploadedSuccess, true);
+    }
+  }, [selector.uploadedSuccess, selector.message, setFieldValue]);
 
   return (
     <form onSubmit={formik.handleSubmit} className={classname(style.appForm, 'relative')}>

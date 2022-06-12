@@ -11,6 +11,7 @@ export const Details = ({
   handleChangeStatus,
   changeStatusSuccess,
   message,
+  changeStatusLoading,
 }: ApplicationDetailPropsT) => {
   const spanStyles = modify
     ? {
@@ -75,6 +76,11 @@ export const Details = ({
                 type="button"
                 className={classname('outline-none focus:outline-none', style.accept)}
                 onClick={handleSaveStatus}
+                disabled={changeStatusLoading}
+                style={{
+                  opacity: changeStatusLoading ? '0.5' : 1,
+                  cursor: changeStatusLoading ? 'not-allowed' : 'pointer',
+                }}
               >
                 <Icon icon="bi:check" fontSize={20} />
               </button>

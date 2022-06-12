@@ -24,6 +24,7 @@ const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
     application: state.applicantReducer.applicationDetail,
     changeSuccess: state.applicantReducer.changeStatusSuccess,
     message: state.messageReducer.message,
+    changeLoading: state.applicantReducer.changeStatusLoading,
   }));
 
   const { application } = selector;
@@ -61,10 +62,11 @@ const ApplicantDetail: NextPage<ApplicationDetailPropsT> = ({ data }) => {
               message={selector.message}
               handleChangeStatus={handleChangeStatus}
               changeStatusSuccess={selector.changeSuccess}
+              changeStatusLoading={selector.changeLoading}
             />
           </div>
           <div className={style.resume}>
-            <PdfView url={application.resume} />
+            <PdfView url={application.resume} fullDetail />
           </div>
         </div>
       </DashboardLayout>

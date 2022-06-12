@@ -47,6 +47,10 @@ const applicantSlice = createSlice({
           }
         : state.applicationDetail,
     }),
+    setUploadSuccess: (state, action: PayloadAction<string | undefined>) => ({
+      ...state,
+      uploadedSuccess: action.payload,
+    }),
   },
 });
 
@@ -61,6 +65,7 @@ const {
   changeStatusLoading,
   changeStatusError,
   changeStatusSuccess,
+  setUploadSuccess,
 } = applicantSlice.actions;
 
 export {
@@ -73,4 +78,5 @@ export {
   changeStatusLoading,
   changeStatusError,
   changeStatusSuccess,
+  setUploadSuccess,
 };

@@ -57,10 +57,12 @@ export interface ApplicationDetailPropsT {
   handleChangeStatus?: (status: string) => void;
   changeStatusSuccess?: ChangeStatusSuccessT;
   message?: string;
+  changeStatusLoading?: boolean;
 }
 
 export interface PdfViewPropsT {
   url: string;
+  fullDetail?: boolean;
 }
 
 export interface ChangeStatusSuccessT {
@@ -77,6 +79,7 @@ export interface ApplicantInitialStateT {
   readonly changeStatusLoading?: boolean;
   readonly changeStatusSuccess?: ChangeStatusSuccessT;
   readonly changeStatusError?: any;
+  readonly uploadedSuccess?: string;
 }
 
 export interface MessageInitialStateT {
