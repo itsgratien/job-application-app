@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Simple Job Application System</title>
+        <title>Job Application System</title>
       </Head>
       <Layout>
         <div className={classnames(style.home, 'relative')}>
